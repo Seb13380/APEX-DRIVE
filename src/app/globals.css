@@ -55,8 +55,8 @@ aside {
   margin-bottom: 16px;
 }
 .logo-box {
-  width: 34px; height: 34px;
-  border-radius: 6px;
+  width: 48px; height: 48px;
+  border-radius: 8px;
   border: 1px dashed var(--muted-dim);
   display: flex;
   align-items: center;
@@ -68,7 +68,7 @@ aside {
   line-height: 1.15;
   overflow: hidden;
 }
-.logo-box img { width: 100%; height: 100%; object-fit: cover; }
+.logo-box img { width: 100%; height: 100%; object-fit: contain; }
 .logo-text .name { font-size: 14px; font-weight: 600; }
 .logo-text .edit { font-size: 10.5px; color: var(--muted-dim); }
 
@@ -126,8 +126,8 @@ main.app-main { flex: 1; min-width: 0; padding: 0 0 50px; }
 /* HERO */
 .hero {
   position: relative;
-  min-height: 240px;
-  padding: 24px 34px;
+  min-height: 340px;
+  padding: 28px 34px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -136,16 +136,16 @@ main.app-main { flex: 1; min-width: 0; padding: 0 0 50px; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 70% 60% at 75% 20%, rgba(198,90,50,0.35), transparent 60%),
-    linear-gradient(180deg, #2B2E33 0%, #17181C 65%, #0B0C0E 100%);
+  background: linear-gradient(180deg, #202226 0%, #131417 65%, #0b0c0e 100%);
   z-index: 0;
 }
-.hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+.hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero-bg::after {
   content: "";
-  position: absolute; left: 0; right: 0; bottom: 0; height: 40%;
-  background: linear-gradient(180deg, transparent, rgba(11,12,14,0.95));
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(11,12,14,0.9) 0%, rgba(11,12,14,0.55) 35%, rgba(11,12,14,0.1) 65%, transparent 100%),
+    linear-gradient(180deg, rgba(11,12,14,0.1) 0%, transparent 30%, rgba(11,12,14,0.85) 100%);
 }
 .hero-edit-tag {
   z-index: 2;
@@ -174,6 +174,7 @@ main.app-main { flex: 1; min-width: 0; padding: 0 0 50px; }
 .hero-top p { font-size: 13.5px; color: var(--muted); margin-top: 3px; }
 .hero-top-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; font-size: 12.5px; color: var(--muted); }
 .hero-bottom-left p { font-size: 11.5px; color: var(--muted); letter-spacing: 0.08em; line-height: 1.7; }
+.hero-bottom-left .accent-line { width: 34px; height: 2px; background: var(--accent); margin-top: 8px; }
 .hero-bottom-right {
   font-family: ui-serif, Georgia, "Times New Roman", serif;
   font-style: italic;
@@ -182,6 +183,7 @@ main.app-main { flex: 1; min-width: 0; padding: 0 0 50px; }
   text-align: right;
   max-width: 220px;
 }
+.hero-bottom-right .accent-line { width: 34px; height: 2px; background: var(--accent); margin-top: 8px; margin-left: auto; }
 
 .content { padding: 26px 34px 0; }
 

@@ -76,8 +76,12 @@ export default async function AccueilPage() {
         <div className="hero-bottom">
           <div className="hero-bottom-left">
             <p>PERFORMANCE<br />PASSION<br />CONFIANCE</p>
+            <div className="accent-line" />
           </div>
-          <div className="hero-bottom-right">« Les meilleures rencontres commencent toujours par un essai. »</div>
+          <div className="hero-bottom-right">
+            « Les meilleures rencontres commencent toujours par un essai. »
+            <div className="accent-line" />
+          </div>
         </div>
       </div>
 
