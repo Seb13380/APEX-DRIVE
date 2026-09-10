@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Car AutoPilote",
   description: "Copilote commercial automobile",
+  icons: {
+    icon: "/img/LogoFavIcon.png",
+    shortcut: "/img/LogoFavIcon.png",
+    apple: "/img/LogoFavIcon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -32,7 +32,7 @@ export function Sidebar({
     <aside>
       <div className="logo-slot">
         <div className="logo-box">
-          {logoUrl ? <img src={logoUrl} alt="Logo concession" /> : <>LOGO<br />concession</>}
+          <img src={logoUrl || encodeURI("/img/Logo carré CarAutoPilote.png")} alt="Logo concession" />
         </div>
         <div className="logo-text">
           <div className="name">{nomConcession || "Nom concession"}</div>
