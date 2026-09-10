@@ -1,0 +1,10 @@
+project_id = "car-autopilote"
+
+[functions.webhook-note-entrante]
+verify_jwt = true
+
+[functions.relance-quotidienne]
+verify_jwt = false
+# Planification quotidienne à 7h00 (heure du serveur). Adapter le fuseau si besoin.
+[functions.relance-quotidienne.schedule]
+cron = "0 7 * * *"
