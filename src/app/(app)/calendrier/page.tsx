@@ -1,6 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { format } from "date-fns";
-import { fr } from "date-fns/locale";
+import { formatParis } from "@/lib/formatDate";
 
 export default async function CalendrierPage() {
   const supabase = await createClient();
@@ -11,7 +10,7 @@ export default async function CalendrierPage() {
 
   const parJour = new Map<string, typeof rdv>();
   for (const r of rdv ?? []) {
-    const cle = format(new Date(r.date_heure), "yyyy-MM-dd");
+    const cle = formatParis(r.date_heure, "yyyy-MM-dd");
     const liste = parJour.get(cle) ?? [];
     liste.push(r);
     parJour.set(cle, liste);
@@ -25,11 +24,11 @@ export default async function CalendrierPage() {
           Array.from(parJour.entries()).map(([jour, items]) => (
             <div key={jour} style={{ marginBottom: 18 }}>
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 6, textTransform: "capitalize" }}>
-                {format(new Date(jour), "EEEE d MMMM yyyy", { locale: fr })}
+                {formatParis(jour, "EEEE d MMMM yyyy")}
               </div>
               {items!.map((r) => (
                 <div className="agenda-row" key={r.id}>
-                  <div className="time mono">{format(new Date(r.date_heure), "HH:mm")}</div>
+                  <div className="time mono">{formatParis(r.date_heure, "HH:mm")}</div>
                   <div className="bar" />
                   <div className="titlewrap">
                     <div className="t">{r.titre}</div>

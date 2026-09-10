@@ -309,6 +309,32 @@ main.app-main { flex: 1; min-width: 0; padding: 0 0 50px; }
 
 .empty-hint { font-size: 12.5px; color: var(--muted-dim); padding: 10px 0; }
 
+.inline-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  padding: 14px;
+  margin-bottom: 14px;
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.inline-form input, .inline-form select, .inline-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 5px;
+  padding: 7px 9px;
+  font-size: 12.5px;
+  color: var(--ink);
+  outline: none;
+}
+.inline-form input:focus, .inline-form select:focus, .inline-form textarea:focus { border-color: var(--accent); }
+.inline-form label { font-size: 11px; color: var(--muted); display: flex; flex-direction: column; gap: 3px; }
+.inline-form .checkbox-row { flex-direction: row; align-items: center; gap: 6px; }
+.inline-form .actions { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; }
+.inline-form .actions .erreur { font-size: 11.5px; color: #e0715a; }
+
 @media (max-width: 1000px) {
   .app-shell { flex-direction: column; }
   aside { width: 100%; }

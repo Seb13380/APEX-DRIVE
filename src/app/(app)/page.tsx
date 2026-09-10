@@ -1,6 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { format } from "date-fns";
-import { fr } from "date-fns/locale";
+import { formatParis } from "@/lib/formatDate";
 import { TodoCheck } from "@/components/TodoCheck";
 
 const LABEL_LEAD: Record<string, { texte: string; classe: string }> = {
@@ -69,7 +68,7 @@ export default async function AccueilPage() {
             <p>Toujours plus loin. Plus de clients. Plus d&apos;émotions.</p>
           </div>
           <div className="hero-top-right">
-            <span className="mono">{format(new Date(), "EEE d MMM yyyy — HH:mm", { locale: fr })}</span>
+            <span className="mono">{formatParis(new Date(), "EEE d MMM yyyy — HH:mm")}</span>
             <a className="hero-edit-tag" href="/parametres">photo personnalisable</a>
           </div>
         </div>
@@ -139,7 +138,7 @@ export default async function AccueilPage() {
                     {t.titre}
                   </div>
                   <div className="when mono">
-                    {t.echeance ? format(new Date(t.echeance), "HH:mm") : "—"}
+                    {t.echeance ? formatParis(t.echeance, "HH:mm") : "—"}
                   </div>
                 </div>
               ))
@@ -153,7 +152,7 @@ export default async function AccueilPage() {
             {rdvJour && rdvJour.length > 0 ? (
               rdvJour.map((r) => (
                 <div className="agenda-row" key={r.id}>
-                  <div className="time mono">{format(new Date(r.date_heure), "HH:mm")}</div>
+                  <div className="time mono">{formatParis(r.date_heure, "HH:mm")}</div>
                   <div className="bar" />
                   <div className="titlewrap">
                     <div className="t">{r.titre}</div>
@@ -206,7 +205,7 @@ export default async function AccueilPage() {
                 <div className="activity-row" key={n.id}>
                   <div className="dot2" />
                   <div>{n.resume ?? "Note vocale enregistrée"}</div>
-                  <span className="s">{format(new Date(n.created_at), "d MMM HH:mm", { locale: fr })}</span>
+                  <span className="s">{formatParis(n.created_at, "d MMM HH:mm")}</span>
                 </div>
               ))
             ) : (

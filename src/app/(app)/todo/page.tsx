@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { format } from "date-fns";
+import { formatParis } from "@/lib/formatDate";
 import { TodoCheck } from "@/components/TodoCheck";
 
 export default async function TodoPage() {
@@ -24,7 +24,7 @@ export default async function TodoPage() {
                 <span className="sub">Priorité : {t.priorite}</span>
               </div>
               <div className="when mono">
-                {t.echeance ? format(new Date(t.echeance), "d MMM HH:mm") : "—"}
+                {t.echeance ? formatParis(t.echeance, "d MMM HH:mm") : "—"}
               </div>
             </div>
           ))
