@@ -69,7 +69,7 @@ export default async function AccueilPage() {
           </div>
           <div className="hero-top-right">
             <span className="mono">{formatParis(new Date(), "EEE d MMM yyyy — HH:mm")}</span>
-            <a className="hero-edit-tag" href="/parametres">photo personnalisable</a>
+            
           </div>
         </div>
         <div className="hero-bottom">
