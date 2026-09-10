@@ -16,13 +16,11 @@ const LIENS = [
 export function Sidebar({
   nomConcession,
   logoUrl,
-  fondUrl,
   email,
   nomCommercial,
 }: {
   nomConcession: string;
   logoUrl: string | null;
-  fondUrl: string | null;
   email: string;
   nomCommercial: string;
 }) {
@@ -53,10 +51,6 @@ export function Sidebar({
           </Link>
         ))}
       </nav>
-      <div className="promo-slot">
-        {fondUrl && <img src={fondUrl} alt="" />}
-        <div className="tag">image de fond — personnalisable par le commercial</div>
-      </div>
       <div className="sidebar-foot">
         <div className="avatar">{initiale}</div>
         <div>

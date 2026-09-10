@@ -1,4 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
+import { NouveauClientForm } from "@/components/NouveauClientForm";
+import { DeleteButton } from "@/components/DeleteButton";
 
 const LABEL_LEAD: Record<string, { texte: string; classe: string }> = {
   chaud: { texte: "Chaud", classe: "badge" },
@@ -19,6 +21,7 @@ export default async function ClientsPage() {
         <div className="panel-head">
           <h3>Mes clients <span className="count">{clients?.length ?? 0}</span></h3>
         </div>
+        <NouveauClientForm />
         {clients && clients.length > 0 ? (
           clients.map((c) => (
             <div className="client-row" key={c.id}>
@@ -31,6 +34,7 @@ export default async function ClientsPage() {
                 </span>
               </div>
               <span className={LABEL_LEAD[c.statut_lead].classe}>{LABEL_LEAD[c.statut_lead].texte}</span>
+              <DeleteButton table="clients" id={c.id} />
             </div>
           ))
         ) : (

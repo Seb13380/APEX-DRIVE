@@ -23,7 +23,6 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <Sidebar
         nomConcession={profil?.nom_concession ?? ""}
         logoUrl={profil?.logo_url ?? null}
-        fondUrl={profil?.photo_fond_url ?? null}
         email={user.email ?? "Commercial"}
         nomCommercial={profil?.nom_commercial ?? ""}
       />

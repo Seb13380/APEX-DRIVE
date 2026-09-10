@@ -1,12 +1,14 @@
 import { createClient } from "@/lib/supabase/server";
 import { formatParis } from "@/lib/formatDate";
+import { NouveauRdvForm } from "@/components/NouveauRdvForm";
+import { DeleteButton } from "@/components/DeleteButton";
 
 export default async function CalendrierPage() {
   const supabase = await createClient();
-  const { data: rdv } = await supabase
-    .from("rendez_vous")
-    .select("*")
-    .order("date_heure", { ascending: true });
+  const [{ data: rdv }, { data: clients }] = await Promise.all([
+    supabase.from("rendez_vous").select("*").order("date_heure", { ascending: true }),
+    supabase.from("clients").select("id, nom").order("nom"),
+  ]);
 
   const parJour = new Map<string, typeof rdv>();
   for (const r of rdv ?? []) {
@@ -20,6 +22,7 @@ export default async function CalendrierPage() {
     <div className="content" style={{ paddingTop: 26 }}>
       <div className="panel">
         <div className="panel-head"><h3>Calendrier</h3></div>
+        <NouveauRdvForm clients={clients ?? []} />
         {parJour.size > 0 ? (
           Array.from(parJour.entries()).map(([jour, items]) => (
             <div key={jour} style={{ marginBottom: 18 }}>
@@ -34,6 +37,7 @@ export default async function CalendrierPage() {
                     <div className="t">{r.titre}</div>
                     <span className="s">{r.type}</span>
                   </div>
+                  <DeleteButton table="rendez_vous" id={r.id} />
                 </div>
               ))}
             </div>

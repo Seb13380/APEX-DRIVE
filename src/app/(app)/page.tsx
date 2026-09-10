@@ -1,6 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { formatParis } from "@/lib/formatDate";
 import { TodoCheck } from "@/components/TodoCheck";
+import { NouvelleTacheForm } from "@/components/NouvelleTacheForm";
+import { DeleteButton } from "@/components/DeleteButton";
 
 const LABEL_LEAD: Record<string, { texte: string; classe: string }> = {
   chaud: { texte: "Chaud", classe: "badge" },
@@ -49,6 +51,8 @@ export default async function AccueilPage() {
         .eq("type", "rdv")
         .gte("date_heure", debutMois.toISOString()),
     ]);
+
+  const { data: clientsPourFormulaire } = await supabase.from("clients").select("id, nom").order("nom");
 
   const objectif = profil?.objectif_mensuel ?? 0;
   const nbLeads = clients?.length ?? 0;
@@ -121,8 +125,8 @@ export default async function AccueilPage() {
           <div className="panel">
             <div className="panel-head">
               <h3>Ma to-do list <span className="count">{taches?.length ?? 0}</span></h3>
-              <button className="link" type="button">+ Ajouter une tâche</button>
             </div>
+            <NouvelleTacheForm clients={clientsPourFormulaire ?? []} />
             <div className="tabs">
               <button className="on">Toutes</button>
               <button>Aujourd&apos;hui</button>
@@ -139,6 +143,7 @@ export default async function AccueilPage() {
                   <div className="when mono">
                     {t.echeance ? formatParis(t.echeance, "HH:mm") : "—"}
                   </div>
+                  <DeleteButton table="taches" id={t.id} />
                 </div>
               ))
             ) : (
