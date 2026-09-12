@@ -36,7 +36,7 @@ export function Sidebar({
         </div>
         <div className="logo-text">
           <div className="name">{nomConcession || "Nom concession"}</div>
-          <div className="edit">modifiable</div>
+         
         </div>
       </div>
       <nav>
