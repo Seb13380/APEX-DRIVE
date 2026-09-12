@@ -63,9 +63,7 @@ export default async function AccueilPage() {
   return (
     <>
       <div className="hero">
-        <div className="hero-bg">
-          {profil?.photo_fond_url && <img src={profil.photo_fond_url} alt="" />}
-        </div>
+        <div className="hero-bg" />
         <div className="hero-top">
           <div>
             <h1>Bonjour {profil?.nom_commercial || user?.email?.split("@")[0] || "Commercial"}</h1>

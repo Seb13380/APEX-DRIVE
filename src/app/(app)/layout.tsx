@@ -26,7 +26,15 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         email={user.email ?? "Commercial"}
         nomCommercial={profil?.nom_commercial ?? ""}
       />
-      <main className="app-main">{children}</main>
+      <main className="app-main">
+        {profil?.photo_fond_url && (
+          <div
+            className="page-bg"
+            style={{ backgroundImage: `url(${profil.photo_fond_url})` }}
+          />
+        )}
+        <div className="app-main-content">{children}</div>
+      </main>
     </div>
   );
 }
